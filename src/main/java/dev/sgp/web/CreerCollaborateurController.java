@@ -31,7 +31,7 @@ public class CreerCollaborateurController extends HttpServlet {
 		
 		String matricule = generationMatricule.generateMatricule();
 		String nom = req.getParameter("inputNom");
-		String prenom = req.getParameter("prenom");
+		String prenom = req.getParameter("inputPrenom");
 		String dateDeNaissance = req.getParameter("inputDateNaissance");
 		String adresse = req.getParameter("inputAdresse");
 		String numSecure = req.getParameter("inputNumeroSecure");
@@ -45,7 +45,7 @@ public class CreerCollaborateurController extends HttpServlet {
 		collab.setNom(nom);
 		collab.setPrenom(prenom);
 		collab.setDateNaissance(new Date());
-		collab.setDateNaissance(new Date());
+		collab.setDateHeureCreation(new Date());
 		collab.setAdresse(adresse);
 		collab.setNumSecure(numSecure);
 		collab.setEmailPro(emailPro);
@@ -55,8 +55,11 @@ public class CreerCollaborateurController extends HttpServlet {
 			List<Collaborateur> listCollaborateurs = collabService.getListeCollaborateurs();
 			
 			req.setAttribute("listeCollaborateurs", listCollaborateurs);
-				req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
+			
+			req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
 				.forward(req, resp);
+				
+				
 			
 			
 		} catch (Exception e) {
@@ -67,7 +70,7 @@ public class CreerCollaborateurController extends HttpServlet {
 		
 		
 		
-		
+			
 		req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp")
 		.forward(req, resp);
 	}
