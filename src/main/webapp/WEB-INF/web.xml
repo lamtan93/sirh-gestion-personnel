@@ -2,6 +2,8 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>sgp</display-name>
   
+  <!-- A cause de la migration vers SERVLET 3.0 -->
+  
   <!-- 
   <servlet>
   		<servlet-name>ListerCollaborateursController</servlet-name>
@@ -83,6 +85,11 @@
   		<url-pattern>/*</url-pattern>
   </filter-mapping>
    -->
+  <!--  
+  <listener>
+  	<listener-class>dev.sgp.ecouteurs.CreationCollaborationListener</listener-class>
+  </listener> 
+   --> 
 </web-app>
 
 

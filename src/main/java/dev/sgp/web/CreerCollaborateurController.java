@@ -66,8 +66,8 @@ public class CreerCollaborateurController extends HttpServlet {
 			
 		}
 			
-		req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp")
-		.forward(req, resp);
+		//req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp")
+		//.forward(req, resp);
 	}
 	
 	
