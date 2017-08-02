@@ -36,39 +36,27 @@ dist/css/bootstrap.css">
 				</thead>
 				
 				<tbody>	
-				<%
-					List<Collaborateur> listeCollaborateurs = (List<Collaborateur>) request.getAttribute("listeCollaborateurs");
-					if(!listeCollaborateurs.isEmpty()){
-					for (Collaborateur collab : listeCollaborateurs) {
-				%>
-				 	<tr>
-					 	<td><%= collab.getMatricule() %></td>
-						<td><%= collab.getNom() %></td>
-						<td><%= collab.getPrenom() %></td>
-						<td><%= collab.getAdresse() %></td>
-						<td><%= collab.getDateNaissance() %></td>
-						<td><%= collab.getEmailPro() %></td>
-						<td><%= collab.getNumSecure() %></td>
-						<td><%= collab.getDateHeureCreation() %></td>
-						<td><%= collab.isActif() %></td>
-						<td><img alt="asian-man" src="<%=request.getContextPath()%>/images/asian-man.png"></td>
-					</tr>
+					<c:forEach var="collab" items="${listeCollaborateurs}"  >
+					 	<tr>
+						 	<td>${collab.matricule}</td>
+							<td>${collab.nom}</td>
+							<td>${collab.prenom}</td>
+							<td>${collab.adresse}</td>
+							<td>${collab.dateNaissance}</td>
+							<td>${collab.emailPro}</td>
+							<td>${collab.numSecure}</td>
+							<td>${collab.dateHeureCreation}</td>
+							<td>${collab.actif}</td>
+							<td><img alt="asian-man" src="<%=request.getContextPath()%>/images/asian-man.png"></td>
+						</tr>
 				 
-				
+					</c:forEach>
 				</tbody>			
 						
 						
 		</table>	
 </div>
-		<%
-					}
-		}else{
-		%>
 		
-		<h3>Aucun collaborateurs</h3>
-		<% 	
-		}
-		%>
 
 
 

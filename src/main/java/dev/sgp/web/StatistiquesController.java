@@ -8,26 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dev.sgp.service.CollaborateurService;
+import dev.sgp.service.VisiteService;
 import dev.sgp.util.Constantes;
 
 
-@WebServlet("/collaborateurs/lister")
-public class ListerCollaborateursController extends HttpServlet {
+@WebServlet("/statistiques")
+public class StatistiquesController extends HttpServlet {
 	
-	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;
-	
+	private VisiteService visiteService = Constantes.VISITE_SERVICE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
+
+	req.setAttribute("listVisiteWeb", visiteService.getListeVisiteWeb());	
 		
-		
-		
-		req.setAttribute("listeCollaborateurs", collabService.getListeCollaborateurs());
-		
-		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
-		.forward(req, resp);
-		
+	req.getRequestDispatcher("/WEB-INF/views/collab/statistiquesVisite.jsp").forward(req, resp);
 		
 	}
 

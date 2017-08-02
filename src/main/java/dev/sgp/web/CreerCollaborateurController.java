@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import dev.sgp.service.CollaborateurService;
 import dev.sgp.util.Constantes;
 import dev.sgp.util.generationMatricule;
 
+@WebServlet("/collaborateurs/creer")
 public class CreerCollaborateurController extends HttpServlet {
 
 	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;
