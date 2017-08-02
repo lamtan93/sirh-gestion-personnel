@@ -56,20 +56,13 @@ public class CreerCollaborateurController extends HttpServlet {
 			
 			req.setAttribute("listeCollaborateurs", listCollaborateurs);
 			
-			req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
-				.forward(req, resp);
-				
-				
-			
+			resp.sendRedirect(req.getContextPath()+"/collaborateurs/lister");
 			
 		} catch (Exception e) {
 			req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp")
 			.forward(req, resp);
 			
 		}
-		
-		
-		
 			
 		req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp")
 		.forward(req, resp);
