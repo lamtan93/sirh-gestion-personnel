@@ -2,8 +2,20 @@ package dev.sgp.entite;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Collaborateur {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id; 
+	
 	private String matricule;
 	private String nom;
 	private String prenom;
@@ -14,6 +26,11 @@ public class Collaborateur {
 	private String photo;
 	private Date dateHeureCreation;
 	private boolean actif;
+	
+	private String intitulePoste;
+	@ManyToOne
+	@JoinColumn(name="departement_id")
+	private Departement departement;
 	
 	public String getMatricule() {
 		return matricule;
@@ -95,14 +112,36 @@ public class Collaborateur {
 		this.actif = actif;
 	}
 
+	
+	
+	public String getIntitulePoste() {
+		return intitulePoste;
+	}
+
+	public void setIntitulePoste(String intitulePoste) {
+		this.intitulePoste = intitulePoste;
+	}
+
+	public Departement getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
+	}
+
+	
+
 	@Override
 	public String toString() {
 		return "Collaborateur [matricule=" + matricule + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance="
 				+ dateNaissance + ", adresse=" + adresse + ", numSecure=" + numSecure + ", emailPro=" + emailPro
-				+ ", photo=" + photo + ", dateHeureCreation=" + dateHeureCreation + ", actif=" + actif + "]";
+				+ ", photo=" + photo + ", dateHeureCreation=" + dateHeureCreation + ", actif=" + actif
+				+ ", intitulePoste=" + intitulePoste + ", departement=" + departement + "]";
 	}
 
-	public Collaborateur(){};
+	public Collaborateur(){}
+	
 	
 	public Collaborateur(String matricule, String nom, String prenom, Date dateNaissance, String adresse,
 			String numSecure, String emailPro, String photo, Date dateHeureCreation, boolean actif) {
@@ -117,6 +156,24 @@ public class Collaborateur {
 		this.photo = photo;
 		this.dateHeureCreation = dateHeureCreation;
 		this.actif = actif;
+	}
+
+	public Collaborateur(String matricule, String nom, String prenom, Date dateNaissance, String adresse,
+			String numSecure, String emailPro, String photo, Date dateHeureCreation, boolean actif,
+			String intitulePoste, Departement departement) {
+		super();
+		this.matricule = matricule;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.adresse = adresse;
+		this.numSecure = numSecure;
+		this.emailPro = emailPro;
+		this.photo = photo;
+		this.dateHeureCreation = dateHeureCreation;
+		this.actif = actif;
+		this.intitulePoste = intitulePoste;
+		this.departement = departement;
 	}
 	
 	

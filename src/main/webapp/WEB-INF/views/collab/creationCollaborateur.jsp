@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,10 @@ dist/css/bootstrap.css">
 <div class="well">
 			<div id="myBorder"  class="col-lg-offset-4" >
 				<span id="labelNewCollab" class="label label-default ">New Collaborateur</span>
+				<c:if test="${not empty message}">
+					<span id="labelMessage" class="label label-default ">${message}</span>
+				</c:if>
+				<!-- <span class="label label-default"><a href="collaborateurs/lister" class="list-group-item">Voir List</a></span> -->
 				<div id="myForm">
 				
 					<form method="POST" accept-charset="UTF-8"   >

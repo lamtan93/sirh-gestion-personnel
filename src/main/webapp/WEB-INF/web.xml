@@ -2,7 +2,9 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>sgp</display-name>
   
+  <!-- A cause de la migration vers SERVLET 3.0 -->
   
+  <!-- 
   <servlet>
   		<servlet-name>ListerCollaborateursController</servlet-name>
   		<servlet-class>dev.sgp.web.ListerCollaborateursController</servlet-class>
@@ -16,7 +18,7 @@
   		<url-pattern>/collaborateurs/lister</url-pattern>		
   				
   </servlet-mapping>
-  
+
   
   <servlet>
   		<servlet-name>EditerCollaborateurController</servlet-name>
@@ -32,8 +34,10 @@
   
   </servlet-mapping>
   
-  
+    -->
   <!-- CreerCollaborateurController -->
+  
+  <!-- 
     <servlet>
   		<servlet-name>CreerCollaborateurController</servlet-name>
   		<servlet-class>dev.sgp.web.CreerCollaborateurController</servlet-class>
@@ -48,7 +52,44 @@
   
   </servlet-mapping>
   
+ -->
+  <!-- Statistiques for Visite Web -->
   
+  <!-- 
+   <servlet>
+  		<servlet-name>StatistiquesController</servlet-name>
+  		<servlet-class>dev.sgp.web.StatistiquesController</servlet-class>
+ </servlet>
+ 
+ 
+ 
+  <servlet-mapping>
+  
+  		<servlet-name>StatistiquesController</servlet-name>
+  		<url-pattern>/statistiques</url-pattern>		
+  				
+  </servlet-mapping>
+   -->
+  <!-- Filter -->
+  
+  <!-- 
+  <filter>
+  
+  	<filter-name>FrequentationFilter</filter-name>
+  	<filter-class>dev.sgp.filtre.FrequentationFilter</filter-class>
+  </filter>
+  
+  
+  <filter-mapping>
+  		<filter-name>FrequentationFilter</filter-name>
+  		<url-pattern>/*</url-pattern>
+  </filter-mapping>
+   -->
+  <!--  
+  <listener>
+  	<listener-class>dev.sgp.ecouteurs.CreationCollaborationListener</listener-class>
+  </listener> 
+   --> 
 </web-app>
 
 

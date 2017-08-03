@@ -2,27 +2,30 @@ package dev.sgp.web;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
 
+import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dev.sgp.entite.Collaborateur;
 import dev.sgp.service.CollaborateurService;
-import dev.sgp.util.Constantes;
 import dev.sgp.util.generationMatricule;
 
+@WebServlet("/collaborateurs/creer")
 public class CreerCollaborateurController extends HttpServlet {
 
-	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;
-	
+
+	@EJB
+	@Inject 
+	private CollaborateurService collabService;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
-		req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp")
-		.forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp").forward(req, resp);
 	}
 	
 	
@@ -52,24 +55,15 @@ public class CreerCollaborateurController extends HttpServlet {
 		
 		try {
 			collabService.sauvegarderCollaborateur(collab);
-			List<Collaborateur> listCollaborateurs = collabService.getListeCollaborateurs();
+			req.setAttribute("message", "Création OK !");
 			
-			req.setAttribute("listeCollaborateurs", listCollaborateurs);
-			
-			req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
-				.forward(req, resp);
-				
-				
-			
+			//resp.sendRedirect(req.getContextPath()+"/collaborateurs/lister");
 			
 		} catch (Exception e) {
 			req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp")
 			.forward(req, resp);
 			
 		}
-		
-		
-		
 			
 		req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp")
 		.forward(req, resp);
