@@ -2,6 +2,7 @@ package dev.sgp.web;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,8 +16,9 @@ import dev.sgp.service.CollaborateurService;
 @WebServlet("/collaborateurs/lister")
 public class ListerCollaborateursController extends HttpServlet {
 	
-	
-	@Inject CollaborateurService collabService;
+	@EJB
+	@Inject 
+	CollaborateurService collabService;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{

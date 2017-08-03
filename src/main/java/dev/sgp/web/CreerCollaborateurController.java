@@ -3,6 +3,7 @@ package dev.sgp.web;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +19,9 @@ import dev.sgp.util.generationMatricule;
 public class CreerCollaborateurController extends HttpServlet {
 
 
-	
-	@Inject private CollaborateurService collabService;
+	@EJB
+	@Inject 
+	private CollaborateurService collabService;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
@@ -53,10 +55,6 @@ public class CreerCollaborateurController extends HttpServlet {
 		
 		try {
 			collabService.sauvegarderCollaborateur(collab);
-			//List<Collaborateur> listCollaborateurs = collabService.getListeCollaborateurs();
-			
-			//req.setAttribute("listeCollaborateurs", listCollaborateurs);
-			
 			req.setAttribute("message", "Création OK !");
 			resp.sendRedirect(req.getContextPath()+"/collaborateurs/lister");
 			
