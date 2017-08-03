@@ -1,28 +1,23 @@
 package dev.sgp.ecouteurs;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.stream.Stream;
 
-import javax.servlet.ServletContext;
+import javax.inject.Inject;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import dev.sgp.entite.Collaborateur;
-import dev.sgp.util.Constantes;
+import dev.sgp.service.CollaborateurService;
 
 @WebListener
 public class CreationCollaborateurListener implements ServletContextListener{
+	@Inject	private CollaborateurService collabService;	
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		
-		ServletContext sc = sce.getServletContext();
-		
-		List<Collaborateur> listCollaborateur = new ArrayList<>();
-		
+	
 		Stream.of( new Collaborateur("74DVND", "NOM1", "Prenom1", new Date(), "Paris1", "12457858", "NOM1.Prenom1@societe.com", "Belle photo", new Date(), true),
 				new Collaborateur("75DVND", "NOM2", "Prenom2", new Date(), "Paris2", "22457858", "NOM2.Prenom2@societe.com", "Belle photo", new Date(), true),
 
@@ -37,8 +32,7 @@ public class CreationCollaborateurListener implements ServletContextListener{
 		 new Collaborateur("82DVND", "NOM9", "Prenom9", new Date(), "Paris9", "92457858", "NOM9.Prenom9@societe.com", "Belle photo", new Date(), true),
 		 new Collaborateur("83DVND", "NOM10", "Prenon10", new Date(), "Paris10", "02457858", "NOM10.Prenom10@societe.com", "Belle photo", new Date(), true)
 				)
-		.forEach(Constantes.COLLAB_SERVICE::sauvegarderCollaborateur);
-		
+		.forEach(collabService::sauvegarderCollaborateur);
 		
 	}
 

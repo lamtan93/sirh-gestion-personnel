@@ -15,6 +15,9 @@ public class Collaborateur {
 	private Date dateHeureCreation;
 	private boolean actif;
 	
+	private String intitulePoste;
+	private Departement departement;
+	
 	public String getMatricule() {
 		return matricule;
 	}
@@ -102,7 +105,8 @@ public class Collaborateur {
 				+ ", photo=" + photo + ", dateHeureCreation=" + dateHeureCreation + ", actif=" + actif + "]";
 	}
 
-	public Collaborateur(){};
+	public Collaborateur(){}
+	
 	
 	public Collaborateur(String matricule, String nom, String prenom, Date dateNaissance, String adresse,
 			String numSecure, String emailPro, String photo, Date dateHeureCreation, boolean actif) {

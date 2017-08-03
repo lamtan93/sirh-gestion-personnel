@@ -2,6 +2,7 @@ package dev.sgp.filtre;
 
 import java.io.IOException;
 
+import javax.inject.Inject;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dev.sgp.entite.VisiteWeb;
-import dev.sgp.util.Constantes;
+import dev.sgp.service.VisiteService;
 
 
 
@@ -22,10 +23,10 @@ import dev.sgp.util.Constantes;
 description = "Request Timer filter") 
 public class FrequentationFilter implements Filter {
 	
-	//Service de sauvegarde
+	private ServletContext context;
 
 	
-	private ServletContext context;
+	@Inject private VisiteService visiteService; 
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -59,7 +60,7 @@ public class FrequentationFilter implements Filter {
 			visiteWeb.setTempsExecution((int)tempsExecution);
 			
 			
-			Constantes.VISITE_SERVICE.sauvegarderVisiteWeb(visiteWeb);
+			visiteService.sauvegarderVisiteWeb(visiteWeb);
 
 		}
 		
@@ -77,7 +78,7 @@ public class FrequentationFilter implements Filter {
 			visiteWeb.setChemin(URI);
 			visiteWeb.setTempsExecution((int)tempsExecution);
 		
-			Constantes.VISITE_SERVICE.sauvegarderVisiteWeb(visiteWeb);
+			visiteService.sauvegarderVisiteWeb(visiteWeb);
 			
 		}
 		
