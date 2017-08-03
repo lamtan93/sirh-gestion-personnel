@@ -17,6 +17,7 @@ dist/css/bootstrap.css">
 <div class="well">
 			<div id="myBorder"  class="col-lg-offset-4" >
 				<span id="labelNewCollab" class="label label-default ">New Collaborateur</span>
+			
 				<div id="myForm">
 				
 					<form method="POST" accept-charset="UTF-8"   >

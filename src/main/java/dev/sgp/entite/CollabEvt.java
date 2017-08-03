@@ -2,8 +2,19 @@ package dev.sgp.entite;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
 public class CollabEvt {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
 	private Date dateHeure; 
 	private TypeCollabEvt typeCollabEvt;
 	private String matricule;

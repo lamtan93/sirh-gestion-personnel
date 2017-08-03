@@ -2,7 +2,6 @@ package dev.sgp.web;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -54,10 +53,11 @@ public class CreerCollaborateurController extends HttpServlet {
 		
 		try {
 			collabService.sauvegarderCollaborateur(collab);
-			List<Collaborateur> listCollaborateurs = collabService.getListeCollaborateurs();
+			//List<Collaborateur> listCollaborateurs = collabService.getListeCollaborateurs();
 			
-			req.setAttribute("listeCollaborateurs", listCollaborateurs);
+			//req.setAttribute("listeCollaborateurs", listCollaborateurs);
 			
+			req.setAttribute("message", "Création OK !");
 			resp.sendRedirect(req.getContextPath()+"/collaborateurs/lister");
 			
 		} catch (Exception e) {
