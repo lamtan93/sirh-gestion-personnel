@@ -56,7 +56,8 @@ public class CreerCollaborateurController extends HttpServlet {
 		try {
 			collabService.sauvegarderCollaborateur(collab);
 			req.setAttribute("message", "Création OK !");
-			resp.sendRedirect(req.getContextPath()+"/collaborateurs/lister");
+			
+			//resp.sendRedirect(req.getContextPath()+"/collaborateurs/lister");
 			
 		} catch (Exception e) {
 			req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp")
