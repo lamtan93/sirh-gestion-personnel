@@ -9,6 +9,7 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import dev.sgp.entite.CollabEvt;
@@ -40,6 +41,31 @@ public class CollaborateurService {
 	
 	collabEvt.fire(new CollabEvt(new Date(),TypeCollabEvt.CREATION_COLLAB, collab.getMatricule()));
 	
+	}
+	
+	
+	public List<Collaborateur> getListCollabByIdDepart(int id){
+		
+		String jpql = "SELECT c FROM Collaborateur c WHERE c.departement_id=:id";
+		Query query = em.createQuery(jpql);
+		
+		query.setParameter("id", id);
+		
+		
+		listeCollaborateurs = query.getResultList();
+		
+		return listeCollaborateurs;
+	}
+	
+	
+	public Collaborateur getCollabByMatricule(String matricule){
+		
+		String jpql = "SELECT c FROM Collaborateur c WHERE c.matricule=:matricule";
+		Query query = em.createQuery(jpql);
+		query.setParameter("matricule", matricule);
+		Collaborateur collab = (Collaborateur) query.getSingleResult();
+		
+		return collab;
 	}
 	
 }
