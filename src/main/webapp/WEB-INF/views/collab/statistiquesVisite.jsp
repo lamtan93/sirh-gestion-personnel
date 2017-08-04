@@ -12,6 +12,7 @@
 dist/css/bootstrap.css">
 
 <title>Insert title here</title>
+<c:import url="/index.html"/>
 </head>
 <body>
 

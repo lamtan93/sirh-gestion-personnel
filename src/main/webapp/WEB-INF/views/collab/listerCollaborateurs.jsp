@@ -13,7 +13,7 @@ dist/css/bootstrap.css">
 
 
 <title>SGP - App</title>
-
+<c:import url="/index.html"/>
 </head>
 <body>
 		

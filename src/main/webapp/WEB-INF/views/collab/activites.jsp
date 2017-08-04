@@ -12,6 +12,7 @@ dist/css/bootstrap.css">
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/monStyle.css">
 <title>Insert title here</title>
+<c:import url="/index.html"/>
 </head>
 <body>
 	

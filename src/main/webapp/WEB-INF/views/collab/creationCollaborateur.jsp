@@ -11,6 +11,8 @@ dist/css/bootstrap.css">
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/monStyle.css">
 <title>Creation de collaborateur</title>
+
+<c:import url="/index.html"/>
 </head>
 <body>
 
