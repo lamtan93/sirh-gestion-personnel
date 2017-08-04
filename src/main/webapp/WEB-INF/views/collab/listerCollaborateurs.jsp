@@ -14,7 +14,7 @@ dist/css/bootstrap.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/js/monJs.js">
 
 <title>SGP - App</title>
-
+<c:import url="/index.html"/>
 </head>
 <body>
 <c:import url="/index.html">
@@ -25,32 +25,33 @@ dist/css/bootstrap.css">
 		<table class="table table-hover">
 				<thead>	
 					<tr>
-							<th>Matricule</th>
+							
 							<th>Nom</th>
 							<th>Prénom</th>
-							<th>Adresse</th>
-							<th>Date de Naissance</th>
 							<th>Email Pro</th>
-							<th>Numéro de sécurité sociale</th>
-							<th>Date/Heure de création</th>
-							<th>Etat</th>
+							<th>Fonction</th>
+							<th>Adresse</th>
+							<th>Departement</th>
 							<th>Photo</th>
+							<th>Action</th>
+							
 					</tr>
 				</thead>
 				
 				<tbody>	
 					<c:forEach var="collab" items="${listeCollaborateurs}"  >
 					 	<tr>
-						 	<td>${collab.matricule}</td>
+						 	
 							<td>${collab.nom}</td>
 							<td>${collab.prenom}</td>
-							<td>${collab.adresse}</td>
-							<td>${collab.dateNaissance}</td>
 							<td>${collab.emailPro}</td>
-							<td>${collab.numSecure}</td>
-							<td>${collab.dateHeureCreation}</td>
-							<td>${collab.actif}</td>
-							<td><img alt="asian-man" src="<%=request.getContextPath()%>/statique/images/asian-man.png"></td>
+
+							<td>${collab.intitulePoste}</td>
+							<td>${collab.adresse}</td>
+							<td>${collab.departement.nom}</td>
+							<td><img alt="asian-man" src="<%=request.getContextPath()%>/images/asian-man.png"></td>
+							<td><a href="/sgp/collaborateurs/editer?matriculeCollab=${collab.matricule}">Editer</a></td>
+
 						</tr>
 				 
 					</c:forEach>

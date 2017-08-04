@@ -18,10 +18,8 @@ dist/css/bootstrap.css">
 
 <title>Creation de collaborateur</title>
 
-<c:import url="/index.html">
-	<c:param name="page" value="1"/>
-</c:import>
 
+<c:import url="/index.html"/>
 
 </head>
 <body>

@@ -2,11 +2,11 @@ package dev.sgp.entite;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -27,10 +27,16 @@ public class Collaborateur {
 	private Date dateHeureCreation;
 	private boolean actif;
 	
+	
 	private String intitulePoste;
-	@ManyToOne
-	@JoinColumn(name="departement_id")
+	
+	@ManyToOne(cascade = {CascadeType.ALL})
 	private Departement departement;
+	
+	
+	private String banque;
+	private String bic;
+	private String iban;
 	
 	public String getMatricule() {
 		return matricule;
@@ -131,6 +137,30 @@ public class Collaborateur {
 	}
 
 	
+
+	public String getBanque() {
+		return banque;
+	}
+
+	public void setBanque(String banque) {
+		this.banque = banque;
+	}
+
+	public String getBic() {
+		return bic;
+	}
+
+	public void setBic(String bic) {
+		this.bic = bic;
+	}
+
+	public String getIban() {
+		return iban;
+	}
+
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
 
 	@Override
 	public String toString() {

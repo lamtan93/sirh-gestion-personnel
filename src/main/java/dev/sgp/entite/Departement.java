@@ -1,9 +1,13 @@
 package dev.sgp.entite;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Departement {
@@ -13,12 +17,18 @@ public class Departement {
 	private int id;
 	private String nom;
 	
+	@OneToMany(mappedBy = "departement")
+	private Collection<Collaborateur> listCollaborateurs;
 	
-	public Departement(){}
+	public Departement(){
+		listCollaborateurs = new ArrayList<>();
+	}
 	
-	public Departement(int id, String nom) {
 	
-		this.id = id;
+	
+	public Departement(String nom) {
+	
+		
 		this.nom = nom;
 	}
 
@@ -52,7 +62,19 @@ public class Departement {
 	public String toString() {
 		return "Departement [id=" + id + ", nom=" + nom + "]";
 	}
-	
+
+
+
+//	public Collection<Collaborateur> getListCollaborateurs() {
+//		return listCollaborateurs;
+//	}
+//
+//
+//
+//	public void setListCollaborateurs(Collection<Collaborateur> listCollaborateurs) {
+//		this.listCollaborateurs = listCollaborateurs;
+//	}
+//	
 	
 	
 	
