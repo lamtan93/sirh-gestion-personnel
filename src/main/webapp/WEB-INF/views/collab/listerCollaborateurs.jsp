@@ -9,14 +9,17 @@
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-
 dist/css/bootstrap.css">
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/monStyle.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/js/monJs.js">
 
 <title>SGP - App</title>
 
 </head>
 <body>
-		
+<c:import url="/index.html">
+	<c:param name="page" value="1"/>
+</c:import>		
 <div class="container">	
 <h2>Les collaborateurs</h2>	
 		<table class="table table-hover">
@@ -47,7 +50,7 @@ dist/css/bootstrap.css">
 							<td>${collab.numSecure}</td>
 							<td>${collab.dateHeureCreation}</td>
 							<td>${collab.actif}</td>
-							<td><img alt="asian-man" src="<%=request.getContextPath()%>/images/asian-man.png"></td>
+							<td><img alt="asian-man" src="<%=request.getContextPath()%>/statique/images/asian-man.png"></td>
 						</tr>
 				 
 					</c:forEach>

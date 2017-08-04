@@ -6,21 +6,35 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/monStyle.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/js/monJs.js">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-
 dist/css/bootstrap.css">
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/monStyle.css">
 <title>Creation de collaborateur</title>
+
+<c:import url="/index.html">
+	<c:param name="page" value="1"/>
+</c:import>
+
+
 </head>
 <body>
 
 <div class="well">
 			<div id="myBorder"  class="col-lg-offset-4" >
 				<span id="labelNewCollab" class="label label-default ">New Collaborateur</span>
-				<c:if test="${not empty message}">
-					<span id="labelMessage" class="label label-default ">${message}</span>
-				</c:if>
-				<!-- <span class="label label-default"><a href="collaborateurs/lister" class="list-group-item">Voir List</a></span> -->
+							<c:if test="${ not empty message }">
+								<div id="iconCheckOK">
+									<img alt="created success" src="<%=request.getContextPath()%>/images/checkOK.png">
+									
+								</div>	
+							</c:if>	
 				<div id="myForm">
 				
 					<form method="POST" accept-charset="UTF-8"   >
@@ -54,11 +68,12 @@ dist/css/bootstrap.css">
 							</div>
 							
 							<div class="row">
-								<div class="col-lg-offset-3" >
+								<div class="col-lg-offset-3 " >
 									
 									<input id="buttonCreate" class="btn btn-default  " type="submit" name="" value="Créer">
-									
 								</div>
+								
+								
 							</div>
 				
 					</form>

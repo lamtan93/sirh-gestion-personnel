@@ -9,12 +9,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-
 dist/css/bootstrap.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/monStyle.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/js/monJs.js">
 <title>Insert title here</title>
 </head>
 <body>
-	
+<c:import url="/index.html">
+	<c:param name="page" value="1"/>
+</c:import>	
+
 	<div class="container">	
 <h2>Activités depuis le démarrage de l'application</h2>	
 		<table class="table table-hover">
