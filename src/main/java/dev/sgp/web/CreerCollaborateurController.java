@@ -26,6 +26,8 @@ public class CreerCollaborateurController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
 		req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp").forward(req, resp);
+		
+		resp.sendRedirect(req.getContextPath()+"/collaborateurs/creer");
 	}
 	
 	
@@ -56,8 +58,8 @@ public class CreerCollaborateurController extends HttpServlet {
 		try {
 			collabService.sauvegarderCollaborateur(collab);
 			req.setAttribute("message", "Création OK !");
-			
-			//resp.sendRedirect(req.getContextPath()+"/collaborateurs/lister");
+			req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp")
+			.forward(req, resp);
 			
 		} catch (Exception e) {
 			req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp")
@@ -65,8 +67,6 @@ public class CreerCollaborateurController extends HttpServlet {
 			
 		}
 			
-		req.getRequestDispatcher("/WEB-INF/views/collab/creationCollaborateur.jsp")
-		.forward(req, resp);
 	}
 	
 	

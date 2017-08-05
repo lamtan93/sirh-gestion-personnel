@@ -40,7 +40,7 @@ public class CollaborateurRessource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/{id}")
+	@Path("/byDepartement/{id}")
 	public List<Collaborateur> listCollabByIdDepartement(@PathParam("id")int id){
 		
 		listCollab = collabService.getListCollabByIdDepart(id);
@@ -90,8 +90,7 @@ public class CollaborateurRessource {
 		
 		Collaborateur collab = editerService.findCollaborateurByMatricule(matricule);
 		
-		editerService.editerCollaborateur(collab, collab.getIntitulePoste(), collab.getAdresse(), collab.getDepartement(), collabInput.getBanque(), collabInput.getBic(), collabInput.getIban());
-		
+		editerService.editerCollaborateur(collab, collab.getIntitulePoste(), collab.getAdresse(), collab.getDepartement(), collabInput.getBanque(), collabInput.getBic(), collabInput.getIban());	
 		
 }
 	

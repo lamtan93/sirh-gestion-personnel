@@ -1,5 +1,6 @@
 package dev.sgp.entite;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -8,29 +9,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 @Entity
-public class Collaborateur {
+public class Collaborateur implements Serializable{
+private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
 	
-	private String matricule;
+       
+    private String matricule;
 	private String nom;
 	private String prenom;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
 	private Date dateNaissance;
 	private String adresse;
 	private String numSecure;
 	private String emailPro;
 	private String photo;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
 	private Date dateHeureCreation;
 	private boolean actif;
 	
 	
 	private String intitulePoste;
 	
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Departement departement;
 	
 	
@@ -61,7 +67,7 @@ public class Collaborateur {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-
+        
 	public Date getDateNaissance() {
 		return dateNaissance;
 	}
@@ -101,7 +107,7 @@ public class Collaborateur {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-
+       
 	public Date getDateHeureCreation() {
 		return dateHeureCreation;
 	}
@@ -175,7 +181,7 @@ public class Collaborateur {
 	
 	public Collaborateur(String matricule, String nom, String prenom, Date dateNaissance, String adresse,
 			String numSecure, String emailPro, String photo, Date dateHeureCreation, boolean actif) {
-		super();
+		
 		this.matricule = matricule;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -191,7 +197,7 @@ public class Collaborateur {
 	public Collaborateur(String matricule, String nom, String prenom, Date dateNaissance, String adresse,
 			String numSecure, String emailPro, String photo, Date dateHeureCreation, boolean actif,
 			String intitulePoste, Departement departement) {
-		super();
+		
 		this.matricule = matricule;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -204,6 +210,29 @@ public class Collaborateur {
 		this.actif = actif;
 		this.intitulePoste = intitulePoste;
 		this.departement = departement;
+	}
+
+	public Collaborateur(String matricule, String nom, String prenom, Date dateNaissance, String adresse,
+			String numSecure, String emailPro, String photo, Date dateHeureCreation, boolean actif,
+			String intitulePoste,  String banque, String bic, String iban, Departement dept) {
+		
+		this.matricule = matricule;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.adresse = adresse;
+		this.numSecure = numSecure;
+		this.emailPro = emailPro;
+		this.photo = photo;
+		this.dateHeureCreation = dateHeureCreation;
+		this.actif = actif;
+		this.intitulePoste = intitulePoste;
+		
+		this.banque = banque;
+		this.bic = bic;
+		this.iban = iban;
+                this.departement = dept;
+               
 	}
 	
 	

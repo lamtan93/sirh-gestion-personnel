@@ -32,12 +32,11 @@ public class CollaborateurService {
 	listeCollaborateurs =  query.getResultList();
 	return listeCollaborateurs;
 	
-	
 	}
 	
 	public void sauvegarderCollaborateur(Collaborateur collab) {
-		
-	em.persist(collab);
+
+	em.merge(collab);
 	
 	collabEvt.fire(new CollabEvt(new Date(),TypeCollabEvt.CREATION_COLLAB, collab.getMatricule()));
 	
@@ -46,7 +45,7 @@ public class CollaborateurService {
 	
 	public List<Collaborateur> getListCollabByIdDepart(int id){
 		
-		String jpql = "SELECT c FROM Collaborateur c WHERE c.departement_id=:id";
+		String jpql = "SELECT d.listCollaborateurs FROM Departement d WHERE d.id=:id";
 		Query query = em.createQuery(jpql);
 		
 		query.setParameter("id", id);

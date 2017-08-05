@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -17,11 +19,12 @@ public class DepartementService {
 	
 	List<Departement> listDepartements = new ArrayList<>();
 	
-	
-	
 	public void sauvegardeDepartement(Departement dep){
+		
 		em.persist(dep);
+		
 	}
+	
 	
 	public List<Departement> getListDepartement (){
 		TypedQuery<Departement> query = em.createQuery("SELECT d from Departement d", Departement.class);	

@@ -17,9 +17,7 @@ dist/css/bootstrap.css">
 <c:import url="/index.html"/>
 </head>
 <body>
-<c:import url="/index.html">
-	<c:param name="page" value="1"/>
-</c:import>		
+	
 <div class="container">	
 <h2>Les collaborateurs</h2>	
 		<table class="table table-hover">
