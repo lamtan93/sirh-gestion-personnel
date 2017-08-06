@@ -2,8 +2,9 @@
 
 #myBorder{
 	background: #33304e;
-	width: 510px;
-	height: 757px;
+width: 510px;
+height: auto;
+
 }
 #myForm{
 padding-top: 33px;
@@ -29,17 +30,21 @@ padding-top: 33px;
 	font-weight: bold;
 	font-family: 'open sans',sans-serif;
 	background: white;
+	margin-bottom: 11px;
+}
+
+#labelMessage{
+
+margin-bottom: 63px;
+margin-top: -30px;
 
 }
 
-#iconCheckOk{
-
-	float: right;
-	margin-right: 10px;
-	display: inline-block;
-	padding:0px;
+#iconCheckOk img{
+	height: 40px;
+float: right;
+	
 }
-
 
 /*Page de list collabs*/
 
@@ -151,3 +156,4 @@ padding: 48px;
 
 
 }
+

@@ -1,7 +1,26 @@
 $(document).ready(function(){
-	$("#buttonCreate").click(function(){
-		$("#iconCheckOK").show(1000, function() {
-			$("#iconCheckOK").hide(5000);
-		});;
-	});		
+	
+//	$("#buttonCreate").click(function(){
+//		$("#labelMessage").show(1000, function() {
+//			$("#labelMessage").hide(2000);
+//		});
+//	});	
+	
+	//table more
+	
+//	$("#buttonDetail").click(function(){
+//	 $("#tableMore").dialog({
+//        modal: true,
+//        buttons: {
+//          Ok: function() {
+//            $( this ).dialog( "close" );
+//          }
+//        }
+//      });
+//	});
+	
+	
+	
 });
+
+

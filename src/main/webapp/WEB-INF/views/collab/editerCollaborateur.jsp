@@ -10,6 +10,7 @@
 dist/css/bootstrap.css">
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/monStyle.css">
+<script src="<%=request.getContextPath()%>/js/monJs.js"></script>
 <title>Editer collaborateur</title>
 
 <c:import url="/index.html"/>
@@ -58,32 +59,32 @@ dist/css/bootstrap.css">
 							
 							<div class="row">
 								<div class="col-lg-10 col-lg-offset-1"><br>
-									<input class="form-control" type="date" id="inputIntitulePoste" name="inputIntitulePoste" placeholder="Intitulé poste*" required="required"><br>
+									<input class="form-control" type="date" id="inputIntitulePoste" name="inputIntitulePoste" placeholder="Intitulé poste actuel*: ${collabCurrent.intitulePoste}" required="required"><br>
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="col-lg-10 col-lg-offset-1"><br>
-									<input class="form-control" type="date" id="inputDepartement" name="inputDepartement" placeholder="Département*" required="required"><br>
+									<input class="form-control" type="date" id="inputDepartement" name="inputDepartement" placeholder="Département actuel*: ${collabCurrent.departement.nom}" required="required"><br>
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="col-lg-10 col-lg-offset-1"><br>
-									<input class="form-control" type="date" id="inputBanque" name="inputBanque" placeholder="Banque*" required="required"><br>
+									<input class="form-control" type="date" id="inputBanque" name="inputBanque" placeholder="Banque actuelle*: ${collabCurrent.banque} *" required="required"><br>
 								</div>
 							</div>
 							
 							
 							<div class="row">
 								<div class="col-lg-10 col-lg-offset-1"><br>
-									<input class="form-control" type="date" id="inputBic" name="inputBic" placeholder="Bic*" required="required"><br>
+									<input class="form-control" type="date" id="inputBic" name="inputBic" placeholder="Bic actuel*: ${collabCurrent.bic}" required="required"><br>
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="col-lg-10 col-lg-offset-1"><br>
-									<input class="form-control" type="date" id="inputIban" name="inputIban" placeholder="Iban*" required="required"><br>
+									<input class="form-control" type="date" id="inputIban" name="inputIban" placeholder="Iban actuel*: ${collabCurrent.iban}" required="required"><br>
 								</div>
 							</div>
 							

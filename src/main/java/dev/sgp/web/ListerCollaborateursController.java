@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dev.sgp.entite.Collaborateur;
 import dev.sgp.service.CollaborateurService;
 
 
@@ -23,14 +24,22 @@ public class ListerCollaborateursController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
 		
-
+		
 		req.setAttribute("listeCollaborateurs", collabService.getListeCollaborateurs());
 
+		String matricule = req.getParameter("matriculeCollabMore");
+		
+		if(matricule!=null){
+			Collaborateur collabMore = collabService.getCollabByMatricule(matricule);
+			req.setAttribute("collabMore", collabMore);
+			
+		}
+		
 		
 		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
 		.forward(req, resp);
 		
-		
 	}
-
+	
+	
 }

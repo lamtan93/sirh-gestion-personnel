@@ -8,13 +8,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/monStyle.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/js/monJs.js">
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-
 dist/css/bootstrap.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/monStyle.css">
+<script src="<%=request.getContextPath()%>/js/monJs.js"></script>
 
 <title>Creation de collaborateur</title>
 
@@ -28,10 +27,8 @@ dist/css/bootstrap.css">
 			<div id="myBorder"  class="col-lg-offset-4" >
 				<span id="labelNewCollab" class="label label-default ">New Collaborateur</span>
 							<c:if test="${ not empty message }">
-								<div id="iconCheckOK">
-									<img alt="created success" src="<%=request.getContextPath()%>/images/checkOK.png">
+									<span id="labelMessage" class="label label-default ">${message}</span>
 									
-								</div>	
 							</c:if>	
 				<div id="myForm">
 				
