@@ -32,7 +32,4 @@ public class DepartementService {
 		return listDepartements;
 	}
 	
-	
-	
-	
 }

@@ -71,7 +71,7 @@ public class CollaborateurRessource {
 	
 	@GET
 	@Path("/{matricule}/banque")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String getInfosBankByMatriculeCollab (@PathParam("matricule") String matricule){
 		
 		Collaborateur collab = editerService.findCollaborateurByMatricule(matricule);

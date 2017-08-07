@@ -6,8 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-
 <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-
 dist/css/bootstrap.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -19,8 +17,7 @@ dist/css/bootstrap.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<!--  -->
+<!-- ---- -->
 
 
 <title>SGP - App</title>
@@ -32,8 +29,8 @@ dist/css/bootstrap.css">
 <div id="tableMore">
 	
 	<div class="container">
-  <h2>Détail du collaborateur</h2>         
-  <table class="table table-bordered">
+	  <h2>Détail du collaborateur</h2>         
+	  <table class="table table-bordered">
     <thead>
       <tr>
 		    <th>Nom</th>
@@ -48,11 +45,11 @@ dist/css/bootstrap.css">
 	         <th>Etat</th>
 	         <th>Adresse</th>
 	         <th>Date de création</th>
-                
       </tr>
     </thead>
     <tbody>
-      <tr>
+     
+     <tr>
         <td>${collabMore.nom}</td>
         <td>${collabMore.prenom}</td>
         <td>${collabMore.intitulePoste}</td>
@@ -61,23 +58,21 @@ dist/css/bootstrap.css">
         <td>${collabMore.banque}</td>
         <td>${collabMore.bic}</td>
         <td>${collabMore.iban}</td>
-         <td>${collabMore.numSecure}</td>
+        <td>${collabMore.numSecure}</td>
         <td>${collabMore.actif}</td>
         <td>${collabMore.adresse}</td>
         <td>${collabMore.dateHeureCreation}</td>
-        
-      </tr>
-    
+     </tr>
     </tbody>
   </table>
 </div>
 </div>
-<!--  -->
- 	
-<!-- ---------------------------------Barre de recherche-------------------------- -->
+<!--  --> 	
+<!-- ------------------------------Barre de recherche-------------------------- -->
 
 	<div class="container">
 	<div class="zoneRecherche">
+	<form  accept-charset="UTF-8">
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="infosGaucheRecherche">
@@ -86,7 +81,7 @@ dist/css/bootstrap.css">
 			</div>
 			<div class="col-lg-3">
 				<div class="infosDroiteRecherche">
-					<input type="text" name="inputRecherche" placeholder="Nom || Prénom*" class="form-control">
+					<input type="text" id="inputRecherche" name="inputRecherche" placeholder="Nom || Prénom*" class="form-control">
 				</div>
 			</div>
 			<div class="col-lg-2">
@@ -100,8 +95,6 @@ dist/css/bootstrap.css">
 					      	<input type="checkbox" value="">
 					      	<span>Voir les collaborateurs désactivés</span>
 					    </label>
-				
-						
 				</div>
 			</div>
 		</div>
@@ -112,33 +105,68 @@ dist/css/bootstrap.css">
 					<span>Filtrer par département</span>
 				</div>
 			</div>
-
-
-			<div class="col-lg-3">
-				<div class="infosDroiteRecherche">
-					
-						<select class="form-control" id="sel1">
-					        <option>Comptabilité</option>
-					        <option>Ressources humaines</option>
-					        <option>Informatique</option>
+			
+			<div class= "col-lg-3" >
+				<div class= "infosDroiteRecherche" >
+						<select class="form-control" id="choixSelected" name="choixSelected" >
+							<optgroup label = "Departement*" >
+					        <option value="Comptabilité">Comptabilité</option>
+					        <option value="Resssources humaines">Ressources humaines</option>
+					        <option value="Informatique">Informatique</option>
+					        </optgroup>
 					    </select>
 				</div>
-
 			</div>
 		</div>
-
+		</form>
 	</div>
 	
 </div>
+<!-- -------------------------------------Fin de zone de Recherche----------------------------------------------------------- -->
 
-<!-- ---------------------------Fin de zone de Recherche------------------------------------- -->
-
-<!-- ---------------------------Mise a jour interface---------------------------------------- -->
-
+<!-- -------------------------------------Mise a jour interface-------------------------------------------------------------- -->
 <div class="container">	
 <h2>Les collaborateurs</h2>	
 	<div class="row">
 <c:forEach var="collab" items="${listeCollaborateurs}"  >	
+	<div class="col-lg-4">
+		<div class="myBox">
+			<div class="nomPrenom">
+				<span>${collab.nom}</span>
+				<span>${collab.prenom}</span>
+			</div>
+			<hr>
+			<div id="image"><img src="<%=request.getContextPath()%>/images/dev_man_young.png"></div>
+			<div class="actions">
+				<div  class="buttonAction"><a id="buttonDetail" href="/sgp/collaborateurs/lister?matriculeCollabMore=${collab.matricule}">More</a></div>
+				<div class="buttonAction"><a href="/sgp/collaborateurs/editer?matriculeCollab=${collab.matricule}">Edit</a></div>
+			</div>
+		<div class="divInfos">
+			<div class="infosGauche">
+				<span>Fonction</span><br>
+				<span>Département</span><br>
+				<span>Email</span><br>
+				<span>Tél</span><br>
+			</div>
+			<div class="infosDroite">
+				<span>${collab.intitulePoste}</span><br>
+				<span>${collab.departement.nom}</span><br>
+				<span>${collab.emailPro}</span><br>
+				<span>075429654</span><br>
+			</div>
+		</div>
+		</div>
+	</div>
+</c:forEach>
+	</div>
+</div>
+
+<!-- Results after recherche -->
+
+	<div class="container">	
+<h2>Les collaborateurs</h2>	
+	<div class="row">
+<c:forEach var="collab" items="${listCollabsAfterRecherecheByAlpha}"  >	
 	<div class="col-lg-4">
 		<div class="myBox">
 			<div class="nomPrenom">
@@ -172,11 +200,8 @@ dist/css/bootstrap.css">
 	</div>
 </c:forEach>
 	</div>
-</div>
-
-
-		
+</div>	
 	
-
+<!--  -->
 </body>
 </html>

@@ -1,12 +1,14 @@
-package dev.sgp.entite;
+	package dev.sgp.entite;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.jms.JMSSessionMode;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +23,7 @@ private static final long serialVersionUID = 1L;
 	
 	private String nom;
 	
-	@OneToMany(mappedBy = "departement")
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "departement")
 	private Collection<Collaborateur> collaborateurs;
 	
 	public Departement(){
@@ -58,13 +60,14 @@ private static final long serialVersionUID = 1L;
 	public String toString() {
 		return "Departement [id=" + id + ", nom=" + nom + "]";
 	}
-
-	public Collection<Collaborateur> getListCollaborateurs() {
-		return collaborateurs;
-	}
-
-	public void setListCollaborateurs(Collection<Collaborateur> listCollaborateurs) {
-		this.collaborateurs = listCollaborateurs;
-	}
+	//Probleme de Ifinite Recursion with JSON when call API REST!!! >.< sa menerve !!! 
+	
+//	public Collection<Collaborateur> getListCollaborateurs() {
+//		return collaborateurs;
+//	}
+//
+//	public void setListCollaborateurs(Collection<Collaborateur> listCollaborateurs) {
+//		this.collaborateurs = listCollaborateurs;
+//	}
 
 }

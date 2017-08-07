@@ -1,6 +1,7 @@
 package dev.sgp.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
@@ -38,6 +39,24 @@ public class ListerCollaborateursController extends HttpServlet {
 		
 		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
 		.forward(req, resp);
+		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
+		
+		String inputRecherche = req.getParameter("inputRecherche");
+		String choixSelected = req.getParameter("choixSelected");
+		
+		if(inputRecherche!=null || choixSelected !=null){
+		List<Collaborateur> listCollab = collabService.listcollabsBeginByNomOrPrenom(inputRecherche);	
+		req.setAttribute("listCollabsAfterRecherecheByAlpha", listCollab);
+		}
+		
+		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
+		.forward(req, resp);
+		
+		
 		
 	}
 	

@@ -3,11 +3,14 @@ package dev.sgp.entite;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.jms.JMSSessionMode;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
@@ -16,10 +19,8 @@ public class Collaborateur implements Serializable{
 private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
-	
-       
+	   
     private String matricule;
 	private String nom;
 	private String prenom;
@@ -36,7 +37,8 @@ private static final long serialVersionUID = 1L;
 	
 	private String intitulePoste;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private Departement departement;
 	
 	
@@ -134,6 +136,8 @@ private static final long serialVersionUID = 1L;
 		this.intitulePoste = intitulePoste;
 	}
 
+	
+	
 	public Departement getDepartement() {
 		return departement;
 	}
@@ -212,7 +216,7 @@ private static final long serialVersionUID = 1L;
 		this.departement = departement;
 	}
 
-	public Collaborateur(String matricule, String nom, String prenom, Date dateNaissance, String adresse,
+	public Collaborateur(int id,String matricule, String nom, String prenom, Date dateNaissance, String adresse,
 			String numSecure, String emailPro, String photo, Date dateHeureCreation, boolean actif,
 			String intitulePoste,  String banque, String bic, String iban, Departement dept) {
 		
@@ -227,7 +231,7 @@ private static final long serialVersionUID = 1L;
 		this.dateHeureCreation = dateHeureCreation;
 		this.actif = actif;
 		this.intitulePoste = intitulePoste;
-		
+		this.id = id;
 		this.banque = banque;
 		this.bic = bic;
 		this.iban = iban;
