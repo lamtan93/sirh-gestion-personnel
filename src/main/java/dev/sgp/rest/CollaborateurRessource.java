@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -33,7 +34,7 @@ public class CollaborateurRessource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Collaborateur> listCollabs (){
+	public Response listCollabs (){
 		
 		 listCollab = collabService.getListeCollaborateurs();
 		 
@@ -41,8 +42,8 @@ public class CollaborateurRessource {
 //				 .entity(listCollab)
 //				 .header("Access-Control-Allow-Origin", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
 //				 .build(); 
-		 
-		return listCollab;
+		
+		return Response.status(250).entity(listCollab).build();
 	}
 	
 	@GET
@@ -86,19 +87,13 @@ public class CollaborateurRessource {
 		
 		bankInfos.setBanque(collab.getBanque());
 		bankInfos.setBic(collab.getBic());
-		bankInfos.setIban(collab.getIban());
-		
-//		String bankJson ="bankInfos :"+ "{"
-//			+ "banque: "+collab.getBanque()
-//				+ ", bic: "+collab.getBic()
-//				+ ", iban: "+collab.getIban()+"}";
-//				
+		bankInfos.setIban(collab.getIban());		
 		
 		return bankInfos;
 }
 	
 	
-	@PUT
+	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/{matricule}/banque")
 	@Produces(MediaType.APPLICATION_JSON)
