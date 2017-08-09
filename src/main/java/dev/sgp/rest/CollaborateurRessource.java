@@ -79,13 +79,22 @@ public class CollaborateurRessource {
 	@GET
 	@Path("/{matricule}/banque")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getInfosBankByMatriculeCollab (@PathParam("matricule") String matricule){
+	public Collaborateur getInfosBankByMatriculeCollab (@PathParam("matricule") String matricule){
 		
 		Collaborateur collab = editerService.findCollaborateurByMatricule(matricule);
+		Collaborateur bankInfos = new Collaborateur();
 		
-		String infosBanque = collab.getBanque() + " " + collab.getBic()+ " " + collab.getIban();
+		bankInfos.setBanque(collab.getBanque());
+		bankInfos.setBic(collab.getBic());
+		bankInfos.setIban(collab.getIban());
 		
-		return infosBanque;
+//		String bankJson ="bankInfos :"+ "{"
+//			+ "banque: "+collab.getBanque()
+//				+ ", bic: "+collab.getBic()
+//				+ ", iban: "+collab.getIban()+"}";
+//				
+		
+		return bankInfos;
 }
 	
 	
